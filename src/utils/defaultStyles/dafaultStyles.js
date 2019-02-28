@@ -10,3 +10,8 @@ export const HorizontalCenter = styled.div`
     width: 100%;
     flex-direction: column;
 `
+
+export const Title = styled.h2`
+    text-align: center;
+    text-transform: uppercase;
+`

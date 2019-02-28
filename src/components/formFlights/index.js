@@ -3,7 +3,7 @@ import DatePicker, { registerLocale } from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
-import  dates from '../../utils/constants/dates'
+import dates from '../../utils/constants/dates'
 
 import { connect } from 'react-redux'
 
@@ -27,19 +27,38 @@ const FormFlights = (props) => {
     return (
         <div>
             <form onSubmit={handleSubmit} >
-                {console.log(props)}
-                <div>
-                    <select name='from'>
-                        {props.airports !== undefined ? console.log('opa') : console.log('nao')}
-                    </select>
 
-                    <select name='to'>
-                        <option>teste</option>
-                    </select>
+                <div>
+                    <div>
+                        <label htmlFor='from'>Origem: </label>
+                        <select name='from'>
+                            {props.airports !== undefined && props.airports.map(airport => (
+                                <option
+                                    key={airport.aeroporto}
+                                    value={airport.aeroporto}
+                                >{airport.nome}
+                                </option>)
+                            )}
+                        </select>
+                    </div>
+
+                    <div>
+                        <label htmlFor='to'>Destino: </label>
+                        <select name='to'>
+                            {props.airports !== undefined && props.airports.map(airport => (
+                                <option
+                                    key={airport.aeroporto}
+                                    value={airport.aeroporto}
+                                >{airport.nome}
+                                </option>)
+                            )}
+                        </select>
+                    </div>
 
                     <DatePicker
+                        name='date'
                         selected={startDate}
-                        dateFormat="d/MM/yyyy"
+                        dateFormat="d / MMMM / yyyy"
                         locale="pt-BR"
                         // onChange={this.handleChange}
                         minDate={startDate}
@@ -56,8 +75,9 @@ const FormFlights = (props) => {
 
 
 const mapStateToProps = (state) => {
+
     return {
-        airports: state.airports
+        airports: state.flight.airports
     }
 }
 
