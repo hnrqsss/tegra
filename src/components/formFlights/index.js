@@ -14,7 +14,10 @@ import {
     FormGroup,
     Select,
     Option,
-    DateCustom
+    DateCustom,
+    Label,
+    ButtonGroup,
+    Button
 } from './style'
 
 registerLocale('pt-BR', ptBr)
@@ -37,7 +40,7 @@ const FormFlights = (props) => {
 
                 <div>
                     <FormGroup>
-                        <label htmlFor='from'>Origem: </label>
+                        <Label htmlFor='from'>Origem: </Label>
                         <Select name='from'>
                             {props.airports !== undefined && props.airports.map(airport => (
                                 <Option
@@ -50,7 +53,7 @@ const FormFlights = (props) => {
                     </FormGroup>
 
                     <FormGroup>
-                        <label htmlFor='to'>Destino: </label>
+                        <Label htmlFor='to'>Destino: </Label>
                         <Select name='to'>
                             {props.airports !== undefined && props.airports.map(airport => (
                                 <Option
@@ -63,7 +66,7 @@ const FormFlights = (props) => {
                     </FormGroup>
 
                     <FormGroup>
-                        <label htmlFor='date'>Data: </label>
+                        <Label htmlFor='date'>Data: </Label>
                         <DateCustom
                             name='date'
                             Selected={startDate}
@@ -77,7 +80,9 @@ const FormFlights = (props) => {
                         />
                     </FormGroup>
 
-                    <button>Pesquisar</button>
+                    <ButtonGroup>
+                        <Button>Pesquisar</Button>
+                    </ButtonGroup>
 
                 </div>
             </Form>
