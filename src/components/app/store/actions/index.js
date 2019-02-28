@@ -5,11 +5,13 @@ export const {
     Creators
 } = createActions({
    
-   startRequestAirPorts: null,
-   requestAirPortsSuccess: ['airPorts'],
-   requestAirPortsError: ['errors'],
-
-   requestFlights: ['flights'],
+   startRequestAirports: null,
+   requestAirportsSuccess: ['airPorts'],
+   requestAirportsError: ['errors'],
+   
+   startRequestFlights: null,
+   requestFlightsSuccess: ['flights'],
+   requestFlightsError: ['errors'],
 
    selectDate: ['date']
 

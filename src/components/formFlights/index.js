@@ -5,6 +5,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 import  dates from '../../utils/constants/dates'
 
+import { connect } from 'react-redux'
+
 import ptBr from 'date-fns/locale/pt-BR'
 
 registerLocale('pt-BR', ptBr)
@@ -13,24 +15,25 @@ const startDate = new Date(dates.startDate)
 const endDate = new Date(dates.endDate)
 
 
-const FormFlights = () => {
+const FormFlights = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        console.log('opa')
+        console.log('test')
 
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit} >
+                {console.log(props)}
                 <div>
-                    <select>
-                        <option>teste</option>
+                    <select name='from'>
+                        {props.airports !== undefined ? console.log('opa') : console.log('nao')}
                     </select>
 
-                    <select>
+                    <select name='to'>
                         <option>teste</option>
                     </select>
 
@@ -51,4 +54,12 @@ const FormFlights = () => {
     )
 }
 
-export default FormFlights
+
+const mapStateToProps = (state) => {
+    return {
+        airports: state.airports
+    }
+}
+
+
+export default connect(mapStateToProps)(FormFlights)
