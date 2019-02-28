@@ -10,3 +10,8 @@ export function* getAirPorts() {
   yield put(Creators.requestAirportsSuccess(data))
 
 }
+
+export function* getFlights({ search }) {
+  const { data } = yield api.post('', search)
+  yield put(Creators.requestFlightsSuccess(data))
+}

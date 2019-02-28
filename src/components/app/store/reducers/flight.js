@@ -8,7 +8,7 @@ import dates from '../../../../utils/constants/dates'
 const INITIAL_STATE = {
     isFetching: false,
     airports: [],
-    date: new Date(dates.startDate),
+    date: '',
     flights: [],
     errors: []
 }
@@ -17,14 +17,15 @@ export const startRequestAirports = (state = INITIAL_STATE, action) => {
 
     return {
         ...state,
+        date: dates.startDate,
         isFetching: true,
     }
 }
 
 export const requestAirportsSuccess = (state = INITIAL_STATE, action) => {
-    
+
     console.log(action)
-    
+
     return {
         ...state,
         isFetching: false,
@@ -32,7 +33,7 @@ export const requestAirportsSuccess = (state = INITIAL_STATE, action) => {
         errors: []
     }
 }
-   
+
 export const requestAirportsError = (state = INITIAL_STATE, action) => {
     return {
         ...state,
@@ -68,7 +69,7 @@ export const requestFlightsError = (state = INITIAL_STATE, action) => {
         flights: []
     }
 }
-   
+
 export const selectDate = (state = INITIAL_STATE, action) => {
     return {
         ...state,

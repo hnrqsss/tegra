@@ -9,7 +9,7 @@ export const {
     requestAirportsSuccess: ['airports'],
     requestAirportsError: ['errors'],
 
-    startRequestFlights: null,
+    startRequestFlights: ['search'],
     requestFlightsSuccess: ['flights'],
     requestFlightsError: ['errors'],
 

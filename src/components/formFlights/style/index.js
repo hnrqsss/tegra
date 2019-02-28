@@ -13,7 +13,6 @@ export const FormGroup = styled.div`
   flex-direction: row;
   align-items: center;
   width: 100%;
-
 `
 
 export const Select = styled.select`

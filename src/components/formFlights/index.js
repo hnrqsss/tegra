@@ -1,5 +1,7 @@
 import React from 'react'
-import DatePicker, { registerLocale } from 'react-datepicker'
+import { registerLocale } from 'react-datepicker'
+
+import dateformat from 'dateformat'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -8,6 +10,11 @@ import dates from '../../utils/constants/dates'
 import { connect } from 'react-redux'
 
 import ptBr from 'date-fns/locale/pt-BR'
+import addDays from 'date-fns/addDays'
+
+import { api } from '../../utils/api'
+
+import { Creators } from '../app/store/actions'
 
 import {
     Form,
@@ -27,11 +34,25 @@ const endDate = new Date(dates.endDate)
 
 const FormFlights = (props) => {
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
+
         event.preventDefault()
 
-        console.log('test')
+        const data = new FormData(event.target)
 
+        const search = {
+            from: data.get('from'),
+            to: data.get('to'),
+            date: props.date
+        }
+
+        props.startRequestFlights(search)
+    }
+
+    const handleDate = (date) => {
+        const newDate = dateformat(date, 'yyyy-mm-d')
+
+        props.selectDate(newDate)
     }
 
     return (
@@ -69,12 +90,12 @@ const FormFlights = (props) => {
                         <Label htmlFor='date'>Data: </Label>
                         <DateCustom
                             name='date'
-                            Selected={startDate}
-                            dateFormat="d / MMMM / yyyy"
+                             dateFormat="d / MMMM / yyyy"
+                            selected={addDays(new Date(props.date), 1)}
                             locale="pt-BR"
-                            // onChange={this.handleChange}
-                            minDate={startDate}
-                            maxDate={endDate}
+                            onChange={handleDate}
+                            minDate={addDays(startDate,1)}
+                            maxDate={addDays(endDate,1)}
                             placeholderText={'Data de saída'}
 
                         />
@@ -83,7 +104,7 @@ const FormFlights = (props) => {
                     <ButtonGroup>
                         <Button>Pesquisar</Button>
                     </ButtonGroup>
-
+                    {console.log(props.date)}
                 </div>
             </Form>
         </div>
@@ -94,9 +115,17 @@ const FormFlights = (props) => {
 const mapStateToProps = (state) => {
 
     return {
-        airports: state.flight.airports
+        airports: state.flight.airports,
+        date: state.flight.date
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        selectDate: (date) => dispatch(Creators.selectDate(date)),
+        startRequestFlights: (search) => dispatch(Creators.startRequestFlights(search))
     }
 }
 
 
-export default connect(mapStateToProps)(FormFlights)
+export default connect(mapStateToProps, mapDispatchToProps)(FormFlights)
