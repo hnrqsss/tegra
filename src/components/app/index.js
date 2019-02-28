@@ -3,12 +3,13 @@ import FormFlights from '../formFlights';
 
 import { Provider } from 'react-redux'
 
-import { Container, Title } from '../../utils/defaultStyles/dafaultStyles'
+import { Container } from '../../utils/defaultStyles/dafaultStyles'
 
 import { Creators } from './store/actions'
 
 
 import store from './store'
+import Menu from '../menu'
 
 
 class App extends React.Component {
@@ -19,12 +20,14 @@ class App extends React.Component {
 
     render() {
         return (
-            <Container>
-                <Title>Tegra</Title>
-                <Provider store={store}>
-                    <FormFlights />
-                </Provider>
-            </Container>
+            <div>
+                <Menu />
+                <Container>                    
+                    <Provider store={store}>
+                        <FormFlights />
+                    </Provider>
+                </Container>
+            </div>
         )
     }
 }

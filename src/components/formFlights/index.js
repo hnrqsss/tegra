@@ -9,11 +9,18 @@ import { connect } from 'react-redux'
 
 import ptBr from 'date-fns/locale/pt-BR'
 
+import {
+    Form,
+    FormGroup,
+    Select,
+    Option,
+    DateCustom
+} from './style'
+
 registerLocale('pt-BR', ptBr)
 
 const startDate = new Date(dates.startDate)
 const endDate = new Date(dates.endDate)
-
 
 const FormFlights = (props) => {
 
@@ -26,49 +33,54 @@ const FormFlights = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} >
+            <Form onSubmit={handleSubmit} >
 
                 <div>
-                    <div>
+                    <FormGroup>
                         <label htmlFor='from'>Origem: </label>
-                        <select name='from'>
+                        <Select name='from'>
                             {props.airports !== undefined && props.airports.map(airport => (
-                                <option
+                                <Option
                                     key={airport.aeroporto}
                                     value={airport.aeroporto}
                                 >{airport.nome}
-                                </option>)
+                                </Option>)
                             )}
-                        </select>
-                    </div>
+                        </Select>
+                    </FormGroup>
 
-                    <div>
+                    <FormGroup>
                         <label htmlFor='to'>Destino: </label>
-                        <select name='to'>
+                        <Select name='to'>
                             {props.airports !== undefined && props.airports.map(airport => (
-                                <option
+                                <Option
                                     key={airport.aeroporto}
                                     value={airport.aeroporto}
                                 >{airport.nome}
-                                </option>)
+                                </Option>)
                             )}
-                        </select>
-                    </div>
+                        </Select>
+                    </FormGroup>
 
-                    <DatePicker
-                        name='date'
-                        selected={startDate}
-                        dateFormat="d / MMMM / yyyy"
-                        locale="pt-BR"
-                        // onChange={this.handleChange}
-                        minDate={startDate}
-                        maxDate={endDate}
-                        placeholderText="Data de saída"
-                    />
+                    <FormGroup>
+                        <label htmlFor='date'>Data: </label>
+                        <DateCustom
+                            name='date'
+                            Selected={startDate}
+                            dateFormat="d / MMMM / yyyy"
+                            locale="pt-BR"
+                            // onChange={this.handleChange}
+                            minDate={startDate}
+                            maxDate={endDate}
+                            placeholderText={'Data de saída'}
+
+                        />
+                    </FormGroup>
+
                     <button>Pesquisar</button>
 
                 </div>
-            </form>
+            </Form>
         </div>
     )
 }
