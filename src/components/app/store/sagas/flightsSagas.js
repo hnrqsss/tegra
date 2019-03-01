@@ -3,7 +3,7 @@ import { Creators } from '../actions'
 import { api } from '../../../../utils/api'
 
 export function* getAirPorts() {
-
+  
   // CORS origin error
   const { data } = yield api.get('/companies')
 
@@ -12,6 +12,9 @@ export function* getAirPorts() {
 }
 
 export function* getFlights({ search }) {
+  
   const { data } = yield api.post('', search)
+  
   yield put(Creators.requestFlightsSuccess(data))
+
 }

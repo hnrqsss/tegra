@@ -12,8 +12,6 @@ import { connect } from 'react-redux'
 import ptBr from 'date-fns/locale/pt-BR'
 import addDays from 'date-fns/addDays'
 
-import { api } from '../../utils/api'
-
 import { Creators } from '../app/store/actions'
 
 import {
@@ -104,7 +102,7 @@ const FormFlights = (props) => {
                     <ButtonGroup>
                         <Button>Pesquisar</Button>
                     </ButtonGroup>
-                    {console.log(props.date)}
+                    
                 </div>
             </Form>
         </div>
@@ -115,6 +113,7 @@ const FormFlights = (props) => {
 const mapStateToProps = (state) => {
 
     return {
+        ...state,
         airports: state.flight.airports,
         date: state.flight.date
     }

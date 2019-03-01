@@ -4,12 +4,14 @@ import { Types } from '../actions'
 
 import dates from '../../../../utils/constants/dates'
 
+import { timeDiff } from '../../../../utils/flightsTimeDiff'
 
 const INITIAL_STATE = {
     isFetching: false,
     airports: [],
     date: '',
     flights: [],
+    defaultFlights: [],
     errors: []
 }
 
@@ -23,8 +25,6 @@ export const startRequestAirports = (state = INITIAL_STATE, action) => {
 }
 
 export const requestAirportsSuccess = (state = INITIAL_STATE, action) => {
-
-    console.log(action)
 
     return {
         ...state,
@@ -53,11 +53,26 @@ export const startRequestFlights = (state = INITIAL_STATE) => {
 }
 
 export const requestFlightsSuccess = (state = INITIAL_STATE, action) => {
+    
+    const { flights } = action
+
+    const newFlights = flights.map(flight => {
+        
+        flight.total = 0
+        
+        flight.duracao = timeDiff(flight)
+
+        flight.voos.map(item => flight.total += parseFloat(item.valor))
+
+        return flight
+    })
+
     return {
         ...state,
         isFetching: false,
         errors: [],
-        flights: action.flights
+        flights: newFlights,
+        defaultFlights: newFlights
     }
 }
 
