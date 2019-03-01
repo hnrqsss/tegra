@@ -53,13 +53,13 @@ export const startRequestFlights = (state = INITIAL_STATE) => {
 }
 
 export const requestFlightsSuccess = (state = INITIAL_STATE, action) => {
-    
+
     const { flights } = action
 
     const newFlights = flights.map(flight => {
-        
+
         flight.total = 0
-        
+
         flight.duracao = timeDiff(flight)
 
         flight.voos.map(item => flight.total += parseFloat(item.valor))

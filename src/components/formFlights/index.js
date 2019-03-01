@@ -44,6 +44,9 @@ const FormFlights = (props) => {
             date: props.date
         }
 
+        if (search.from === search.to)
+            return alert('Não é possível origem e destino serem iguais')
+
         props.startRequestFlights(search)
     }
 
@@ -88,12 +91,12 @@ const FormFlights = (props) => {
                         <Label htmlFor='date'>Data: </Label>
                         <DateCustom
                             name='date'
-                             dateFormat="d / MMMM / yyyy"
+                            dateFormat="d / MMMM / yyyy"
                             selected={addDays(new Date(props.date), 1)}
                             locale="pt-BR"
                             onChange={handleDate}
-                            minDate={addDays(startDate,1)}
-                            maxDate={addDays(endDate,1)}
+                            minDate={addDays(startDate, 1)}
+                            maxDate={addDays(endDate, 1)}
                             placeholderText={'Data de saída'}
 
                         />
@@ -102,7 +105,7 @@ const FormFlights = (props) => {
                     <ButtonGroup>
                         <Button>Pesquisar</Button>
                     </ButtonGroup>
-                    
+
                 </div>
             </Form>
         </div>

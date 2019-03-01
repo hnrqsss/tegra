@@ -10,6 +10,7 @@ import { Creators } from './store/actions'
 
 import store from './store'
 import Menu from '../menu'
+import Flights from '../flights'
 
 
 class App extends React.Component {
@@ -25,6 +26,7 @@ class App extends React.Component {
                 <Container>                    
                     <Provider store={store}>
                         <FormFlights />
+                        <Flights />
                     </Provider>
                 </Container>
             </div>
