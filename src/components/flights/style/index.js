@@ -7,7 +7,11 @@ export const Ul = styled.ul`
   margin: 10px 0 0 0;
   padding: 0;
   box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
-  
-  ${props => !props.children && `min-height: 300px;`}
+  height: 300px;
+  overflow-y: auto;
+
+  @media(max-width: 498px) {
+    height: 400px;
+  }
 
 ` 

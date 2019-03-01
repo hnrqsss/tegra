@@ -22,7 +22,8 @@ export const HeaderFlight = styled.div`
       background: #ff5a60;
       padding: 5px 15px;
       margin-right: 10px;
-      border-radius: 2px;
+      border-radius: 10px 10px 0 0 ;
+
     }
 
     span:last-child {
@@ -32,7 +33,7 @@ export const HeaderFlight = styled.div`
 `
 
 export const BodyFlights = styled.div`
-  background: #e4e4e4;
+  background: #eee;
   padding: 5px;
 
   h3 {
@@ -45,8 +46,8 @@ export const BodyFlights = styled.div`
   }
 
   span {
-    color: #333;
-    background: transparent;
+    color: #FFF;
+    background: #333;
     padding: 5px 15px;
     margin-right: 10px;
     border-radius: 2px;
