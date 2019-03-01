@@ -15,7 +15,6 @@ const Flight = ({ flight }) => {
       {flight.legth !== 0 ? (<div>
         <HeaderFlight>
           {/* header */}
-          {console.log(flight)}
           <span>Total R$ {formateToReal(flight.total)}</span>
           <span>Duração {flight.duracao} horas</span>
         </HeaderFlight>

@@ -1,4 +1,4 @@
-## Desafio Tegra
+## Desafio Frontend Tegra
 
 Como rodar o projeto
 
