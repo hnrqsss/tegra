@@ -53,8 +53,6 @@ const Flights = (props) => {
           )
         )}
 
-        {console.log(props.flights)}
-
       </Ul>
     </div>
   )
