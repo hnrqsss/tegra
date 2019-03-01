@@ -7,6 +7,7 @@ import {
   Info
 } from './style'
 
+import { formateToReal } from '../../utils/format'
 
 const Flight = ({ flight }) => {
   return (
@@ -15,7 +16,7 @@ const Flight = ({ flight }) => {
         <HeaderFlight>
           {/* header */}
           {console.log(flight)}
-          <span>Total R$ {flight.total}</span>
+          <span>Total R$ {formateToReal(flight.total)}</span>
           <span>Duração {flight.duracao} horas</span>
         </HeaderFlight>
 
@@ -23,14 +24,14 @@ const Flight = ({ flight }) => {
           <h3>Escalas</h3>
           {/* body */}
 
-          {flight.voos.map((item,index) => (
+          {flight.voos.map((item, index) => (
             <Info key={index}>
               <div>
                 {/* header voos */}
                 <span>Vôo: {item.voo}</span>
                 <span>Saída: {item.saida}</span>
                 <span>Chegada: {item.chegada}</span>
-                <span>Valor: R${item.valor}</span>
+                <span>Valor: R${formateToReal(item.valor)}</span>
               </div>
             </Info>
           ))}

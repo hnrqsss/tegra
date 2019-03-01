@@ -11,7 +11,6 @@ const INITIAL_STATE = {
     airports: [],
     date: '',
     flights: [],
-    defaultFlights: [],
     errors: []
 }
 
@@ -71,8 +70,7 @@ export const requestFlightsSuccess = (state = INITIAL_STATE, action) => {
         ...state,
         isFetching: false,
         errors: [],
-        flights: newFlights,
-        defaultFlights: newFlights
+        flights: newFlights
     }
 }
 
@@ -91,7 +89,6 @@ export const selectDate = (state = INITIAL_STATE, action) => {
         date: action.date
     }
 }
-
 export const HANDLERS = {
     [Types.START_REQUEST_AIRPORTS]: startRequestAirports,
     [Types.REQUEST_AIRPORTS_SUCCESS]: requestAirportsSuccess,

@@ -9,6 +9,7 @@ export const Ul = styled.ul`
   box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
   height: 300px;
   overflow-y: auto;
+  scroll-behavior: smooth;
 
   @media(max-width: 498px) {
     height: 400px;
