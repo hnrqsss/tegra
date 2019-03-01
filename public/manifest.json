@@ -1,11 +1,21 @@
 {
-  "short_name": "React App",
+  "short_name": "Desafio Tegra",
   "name": "Desafio Frontend Tegra",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
     }
   ],
   "start_url": ".",
